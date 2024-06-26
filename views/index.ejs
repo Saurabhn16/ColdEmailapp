@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unread Emails</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .email {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin: 10px 0;
+    }
+    .email h2 {
+      margin: 0 0 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Top 10 Unread Emails</h1>
+  <% if (emails.length === 0) { %>
+    <p>No unread emails found.</p>
+  <% } else { %>
+    <% emails.forEach((email) => { %>
+      <div class="email">
+        <h2>Snippet: <%= email.snippet %></h2>
+        <pre><%= JSON.stringify(email.payload.headers, null, 2) %></pre>
+      </div>
+    <% }) %>
+  <% } %>
+</body>
+</html>
